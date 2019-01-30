@@ -1,0 +1,10 @@
+$background : linear-gradient(to right, rgb(255, 102, 153),rgb(255, 153, 153),#ffcccc, #ffe6);
+
+.body{
+     position:absolute;
+     left:0;
+     top:0;
+    background-image: $background;
+    height: 100%;
+    width: 100%;
+}
