@@ -65,7 +65,7 @@ $sizes: (
    width: 95%;
    height: 10vh;
    position:relative;
-   
+   margin-left: 1%;
    margin-top: 20px;
 }
 .sidenav---navtext---1AE_f{
@@ -82,12 +82,8 @@ $sizes: (
     width: 64px;
    
 }
-.withoutmargin{
-   margin-left: 3%;
-}
-.withmargin{
-margin-left: 15%;
-}
+
+
 .amount{
     height: 30px;
     width: 40%;
@@ -107,7 +103,7 @@ margin-left: 15%;
 }
 .submit{
     height: 30px;
-    width: 10%; 
+    width: 90px; 
     border:solid;
     margin-top: 15px;
     margin-left: 10px;
@@ -120,4 +116,7 @@ margin-left: 15%;
     font-size: 1rem;
     box-shadow: 0 0 10px black;
     outline:none;
+}
+.hide{
+    display:none;
 }
