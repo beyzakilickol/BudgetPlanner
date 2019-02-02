@@ -1,6 +1,9 @@
 # Budget Planner
 <img src="budgetplanner.png" height="400px" width="700px">
 
+## Introduction video
+
+https://youtu.be/OOc9cAbcpD0
 ## Install Side Nav
 Install react-sidenav:
 
