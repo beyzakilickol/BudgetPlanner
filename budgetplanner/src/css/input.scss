@@ -37,7 +37,7 @@ $sizes: (
     -o-border-radius: 5px;
     box-shadow: 0 0 20px black;
     display:flex;
-
+   flex-direction: column;
    
    }
 .sidenav---sidenav---_2tBP{
@@ -59,6 +59,7 @@ $sizes: (
     transform: translate(-50%, -50%);
     display:flex;
     justify-content: center;
+    
   
 }
 .inputContainer{
@@ -67,6 +68,8 @@ $sizes: (
    position:relative;
    margin-left: 1%;
    margin-top: 20px;
+   display: flex;
+   flex-direction: column;
 }
 .sidenav---navtext---1AE_f{
     margin-left: 20px;
@@ -82,8 +85,31 @@ $sizes: (
     width: 64px;
    
 }
-
-
+.graphDiv{
+    display:flex;
+    width: 100%;
+    height:auto; 
+    display:flex;
+    margin-left: 2%;
+     flex-direction: column;
+     align-items: center;
+     margin-top: 20px;
+}
+.barDiv{
+    width: 50%;
+    height:auto;
+    
+}
+.pieDiv{
+    width: 50%;
+    height:auto;
+    transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    margin-top: -20px;
+}
 .amount{
     height: 30px;
     width: 40%;

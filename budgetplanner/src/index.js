@@ -8,18 +8,15 @@ import { Provider } from 'react-redux'
 // import history from './history'
 import App from './App'
 import Dashboard from './components/Dashboard'
+//insert data to local storage only once then comment it out
+//localStorage.setItem('data',JSON.stringify([0,0,0,0,0,0,0,0,0]))
 
 //let store = createStore(reducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())  
 ReactDOM.render(
 
- 
-    
-
 <BrowserRouter >
   <Switch>
     <Route exact path="/" component={Dashboard} />
-   
-  
   </Switch>
   
 </BrowserRouter>

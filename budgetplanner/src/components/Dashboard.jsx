@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css/output.css'
 import expenses from './categories.json'
+import {Bar, Line, Pie} from 'react-chartjs-2';
 
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 // Be sure to include styles at some point, probably during your bootstraping
@@ -11,15 +12,56 @@ class Dashboard extends Component{
     constructor(props){
         super(props)
         this.state = {
-         expenses : [],
-          class:'inputContainer hide',
-          
+            class:'inputContainer hide',
+            chartData: {
+            
+          labels : expenses,
+          datasets:[{
+          label: "My budget distribution",
+          data: JSON.parse(localStorage.getItem("data")),
+          backgroundColor: [
+              'rgba(0, 51, 153,0.6)',
+              'rgba(54,162,235,0.6)',
+              'rgba(255,206,86,0.6)',
+              'rgba(102, 255, 102,0.6)',
+              'rgba(153,102,255,0.6)',
+              'rgb(179,0,0,0.6)',
+              'rgba(255,99,132,0.6)',
+              'rgba(102, 255, 179,0.6)',
+              'rgba(102, 51, 0,0.6)'
+          ],
+          }]
         }
+    }
       }
  componentDidMount = ()=> {
      console.log(expenses)
  }
-
+getAmount=(e)=>{
+    console.log(this.state.chartData.datasets[0].data[0])
+    expenses.forEach((each,index)=>{
+        if(this.state.item==each){
+            this.setState({
+                ...this.state,
+                enteredAmount: this.state.chartData.datasets[0].data[index]+parseFloat(e.target.value)
+            },()=>{
+                console.log(this.state.enteredAmount)
+            })
+        }
+    })
+   
+}
+updateAmount=()=>{
+    expenses.forEach((each,index)=>{
+        if(this.state.item==each){
+            let old = JSON.parse(localStorage.getItem("data"))//get array from local storage
+            old[index]=this.state.enteredAmount // change the grocey value
+            localStorage.setItem('data',JSON.stringify(old)) //set the updated array to local storage
+            window.location.reload();
+        } 
+    })
+   
+}
 render() {
 
     return (
@@ -128,11 +170,57 @@ render() {
 <div className={this.state.class}>
           <div className="inputDiv">
           <h4>Enter {this.state.item} Amount:</h4>
-          <input className="amount" type="text" placeholder="$"/>
-          <button className="submit">Submit</button>
+          <input onChange={this.getAmount} className="amount" type="text" placeholder="$"/>
+          <button onClick={this.updateAmount} className="submit">Submit</button>
           </div>
+         
           </div>
-          
+          <div className="graphDiv">
+              <div className="barDiv">
+                    <Bar
+                  
+            data={this.state.chartData}
+            options={{
+                title:{
+                    display:true,
+                    text:'Budget Distribution Bar Graph',
+                    fontSize:20,
+                },
+                legend:{
+                    display: false,
+                },
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            fontSize: 13
+                        }
+                    }]
+                }
+            }}
+        />
+              </div>
+              <div className="pieDiv">
+              <Pie
+            data={this.state.chartData}
+            
+            options={{
+
+                title:{
+                    display:true,
+                    text:'Budget Distribution Pie Graph',
+                    fontSize:20,
+                },
+                legend:{
+                    display: true,
+                     position: 'right',
+                     labels:{
+                         fontSize: 15,
+                     }
+                }
+            }}
+        />
+              </div>
+          </div>
           </div>
           
           </div>
