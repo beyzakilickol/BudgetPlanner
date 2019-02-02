@@ -1,4 +1,5 @@
 # BudgetPlanner
+<img src="budgetplanner.png" height="100px" width="150px">
 ## Install Side Nav
 Install react-sidenav:
 
